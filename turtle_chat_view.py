@@ -115,8 +115,12 @@ class View:
         #Store the username and partner_name into the instance.
         ###
 
-        #Make a new client object and store it in this instance.
+        ###
+        #Make a new Client object and store it in this instance of View
+        #(i.e. self).  The name of the instance should be my_client
+        ###
 
+        ###
         #Set screen dimensions using turtle.setup
         #You can get help on this function, as with other turtle functions,
         #by typing
@@ -125,13 +129,16 @@ class View:
         #   help(turtle.setup)
         #
         #at the Python shell.
+        ###
 
+        ###
         #This list will store all of the messages.
         #You can add strings to the front of the list using
         #   self.msg_queue.insert(0,a_msg_string)
         #or at the end of the list using
         #   self.msg_queue.append(a_msg_string)
         self.msg_queue=[]
+        ###
 
         ###
         #Create one turtle object for each message to display.
@@ -153,7 +160,7 @@ class View:
         '''
         You should implement this method.  It should call the
         send() method of the Client object stored in this View
-        instance.  It should also call update the list of messages,
+        instance.  It should also update the list of messages,
         self.msg_queue, to include this message.  It should
         clear the textbox text display (hint: use the clear_msg method).
         It should call self.display_msg() to cause the message
@@ -163,6 +170,8 @@ class View:
 
     def get_msg(self):
         return self.textbox.get_msg()
+
+    
 
     def setup_listeners(self):
         '''
@@ -199,6 +208,9 @@ class View:
         You can get the messages you want from self.msg_queue
         '''
         pass
+
+    def get_client(self):
+        return self.my_client
 ##############################################################
 ##############################################################
 
@@ -212,9 +224,10 @@ if __name__ == '__main__':
     my_view=View()
     _WAIT_TIME=200 #Time between check for new message, ms
     def check() :
-        msg_in=my_view.my_client.receive()
+        #msg_in=my_view.my_client.receive()
+        msg_in=my_view.get_client().receive()
         if not(msg_in is None):
-            if msg_in==my_view.my_client._END_MSG:
+            if msg_in==Client._END_MSG:
                 print('End message received')
                 sys.exit()
             else:
