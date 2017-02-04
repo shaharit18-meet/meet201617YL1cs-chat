@@ -1,5 +1,5 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
-#WRITE YOUR NAME HERE!
+#Shaharit
 
 #####################################################################################
 #                                   IMPORTS                                         #
@@ -7,6 +7,10 @@
 #import the turtle module
 #import the Client class from the turtle_chat_client module
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
+import turtle
+from turtle_chat_client import Client 
+from turtle_chat_widgets import Button 
+from turtle_chat_widgets import TextInput 
 #####################################################################################
 #####################################################################################
 
@@ -38,6 +42,34 @@
 #####################################################################################
 #####################################################################################
 
+
+class TextBox(TextInput):
+    def draw_box(self):
+        turtle.hideturtle()
+        t= turtle.clone()
+        t.hideturtle()
+        t.penup()
+        t.goto(-100,-100)
+        t.pendown()
+        t.goto(100,-100)
+        t.goto(100,0)
+        t.goto(-100,0)
+        t.goto(-100,-100)
+        t.penup()
+        
+    def write_msg(self):
+        self.writer.goto(-96,-18)
+        self.writer.clear()
+        self.writer.write(self.new_msg)
+        writer_x_pos=self.pos[0]
+        writer_y_pos=self.pos[1]
+        if len(self.new_msg)>self.letters_per_line:
+            self.writer.write(self.new_msg/ 
+
+    
+        
+        
+        
 #####################################################################################
 #                                  SendButton                                       #
 #####################################################################################
@@ -57,9 +89,11 @@
 #####################################################################################
 
 
+        
+
 ##################################################################
-#                             View                               #
-##################################################################
+#
+#################################################################
 #Make a new class called View.  It does not need to have a parent
 #class mentioned explicitly.
 #
