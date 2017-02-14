@@ -8,9 +8,11 @@
 #import the Client class from the turtle_chat_client module
 #Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
 import turtle
+
 from turtle_chat_client import Client 
 from turtle_chat_widgets import Button 
 from turtle_chat_widgets import TextInput 
+
 #####################################################################################
 #####################################################################################
 
@@ -43,6 +45,7 @@ from turtle_chat_widgets import TextInput
 #####################################################################################
 
 
+
 class TextBox(TextInput):
     def draw_box(self):
         turtle.hideturtle()
@@ -64,9 +67,11 @@ class TextBox(TextInput):
         writer_x_pos=self.pos[0]
         writer_y_pos=self.pos[1]
         if len(self.new_msg)>self.letters_per_line:
-            self.writer.write(self.new_msg/ 
+            writer.goto(
+            self.writer.write(self.new_msg)
 
     
+
         
         
         
