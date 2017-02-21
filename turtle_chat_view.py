@@ -66,10 +66,11 @@ class TextBox(TextInput):
         self.writer.write(self.new_msg)
         writer_x_pos=self.pos[0]
         writer_y_pos=self.pos[1]
+        '''
         if len(self.new_msg)>self.letters_per_line:
             writer.goto(
             self.writer.write(self.new_msg)
-
+''''
     
 
         
@@ -92,7 +93,12 @@ class TextBox(TextInput):
 #      you send messages and update message displays.
 #####################################################################################
 #####################################################################################
-
+class SendButton(Button):
+    def fun(self,x=None,y=None):
+        self.view.send_msg()
+    def __init__(self,my_turtle=None,shape=None,pos=(0,0)):
+        super(SendButton,self).__init__(my_turtle=None,shape=None,pos=(0,0))
+        self.view= View()
 
         
 
@@ -119,12 +125,14 @@ class View:
         ###
         #Store the username and partner_name into the instance.
         ###
+        self.username=username
+        self.partner_name=partner_name
 
         ###
         #Make a new Client object and store it in this instance of View
         #(i.e. self).  The name of the instance should be my_client
         ###
-
+        self.my_client= Client()
         ###
         #Set screen dimensions using turtle.setup
         #You can get help on this function, as with other turtle functions,
@@ -135,6 +143,7 @@ class View:
         #
         #at the Python shell.
         ###
+        turtle.setup(width= _SCREEN_WIDTH,height= _SCREEN_HEIGHT)
 
         ###
         #This list will store all of the messages.
@@ -150,16 +159,25 @@ class View:
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
+        new_turtles=[]
+        for a in range(_MSG_LOG_LENGTH):
+            new_turtles.append(turle.clone)
+            new_turtles[a].goto(-(_SCREEN_WIDTH/2),a*(_SCREEN_HEIGHT/2))
+            
 
         ###
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
         ###
+        self.textbox= TextBox()
+        self.sendbutton= SendButton()
 
         ###
         #Call your setup_listeners() function, if you have one,
         #and any other remaining setup functions you have invented.
         ###
+        setup_listeners()
+        
 
     def send_msg(self):
         '''
