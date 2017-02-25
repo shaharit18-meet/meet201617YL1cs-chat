@@ -95,9 +95,8 @@ class SendButton(Button):
     def fun(self,x=None,y=None):
         self.view.send_msg()
     def __init__(self,my_turtle=None,shape=None,pos=(0,-100)):
-        super(SendButton,self).__init__(my_turtle=None,shape=None,pos=(0,-100))
-        self.view= View()
-
+        super(SendButton,self).__init__(my_turtle=None,shape=None,pos=(0,-100),view)
+        self.view= view
         
 
 ##################################################################
