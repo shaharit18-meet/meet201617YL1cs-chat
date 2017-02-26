@@ -44,8 +44,9 @@ from turtle_chat_widgets import TextInput
 #####################################################################################
 #####################################################################################
 
-
-
+turtle.hideturtle()
+screen=turtle.Screen()
+screen.bgpic("aaa (1).gif")
 class TextBox(TextInput):
     def draw_box(self):
         turtle.hideturtle()
@@ -188,7 +189,7 @@ class View:
         display to be updated.
         '''
         self.my_client.send(self.textbox.new_msg)
-        self.msg_queue.append(self.textbox.new_msg)
+        self.msg_queue.append(self.username+" says:\r"+self.textbox.new_msg)
         self.textbox.clear_msg()
         self.display_msg()
 
@@ -221,6 +222,7 @@ class View:
                     - this should be displayed on the screen
         '''
         print(msg) #Debug - print message
+        
         show_this_msg=self.partner_name+' says:\r'+ msg
         #Add the message to the queue either using insert (to put at the beginning)
         #or append (to put at the end).
@@ -238,9 +240,33 @@ class View:
         #for t in self.new_turtles:
         #    t.clear()
         #    t.write(self.msg_queue.pop())
-        
+        self.new_turtles[0].goto(-97,25)
         self.new_turtles[0].clear()
         self.new_turtles[0].write(self.msg_queue[-1])
+        
+        if len(self.msg_queue)>=2 :
+             self.new_turtles[1].goto(-97,75)
+             self.new_turtles[1].clear()
+             self.new_turtles[1].write(self.msg_queue[-2])
+        if len(self.msg_queue)>=3:
+            self.new_turtles[2].goto(-97,125)
+            self.new_turtles[2].clear()
+            self.new_turtles[2].write(self.msg_queue[-3])
+        if len(self.msg_queue)>=4:
+            self.new_turtles[3].goto(-97,175)
+            self.new_turtles[3].clear()
+            self.new_turtles[3].write(self.msg_queue[-4])
+        if len(self.msg_queue)>=5:
+            self.new_turtles[4].goto(-97,225)
+            self.new_turtles[4].clear()
+            self.new_turtles[4].write(self.msg_queue[-5])
+        if len(self.msg_queue)>=6:
+            self.new_turtles[5].goto(-97,275)
+            self.new_turtles[5].clear()
+            self.new_turtles[5].write(self.msg_queue[-6])
+
+
+
 
     def get_client(self):
         return self.my_client
